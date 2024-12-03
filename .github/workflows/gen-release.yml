@@ -34,5 +34,5 @@ jobs:
         git config --global push.followTags true
         git add gen-pack-config.sh
         git commit -m 'パックバージョンを${{ github.event.inputs.tag }}に更新'
-        git tag -a ${{ github.event.inputs.tag }}
+        git tag -a ${{ github.event.inputs.tag }} -m 'パックバージョン${{ github.event.inputs.tag }}'
         git push
