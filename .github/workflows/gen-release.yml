@@ -1,0 +1,38 @@
+name: パックを指定したバージョンに更新
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: '新バージョン'
+        required: true
+        default: 'b0.0.0'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: リポジトリをチェックアウト
+      uses: actions/checkout@v4
+
+    - name: バージョンを書き換え
+      run: |
+        tag=${{ github.event.inputs.tag }}
+        echo "tag=${tag}"
+        sed -i "s/PACK_VERSION=".*"/PACK_VERSION=\"${tag}\"/" gen-pack-config.sh
+      shell: bash
+    
+    - name: コミットしタグ付きでプッシュ
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git config --global push.followTags true
+        git add gen-pack-config.sh
+        git commit -m 'パックバージョンを${{ github.event.inputs.tag }}に更新'
+        git tag -a ${{ github.event.inputs.tag }}
+        git push
