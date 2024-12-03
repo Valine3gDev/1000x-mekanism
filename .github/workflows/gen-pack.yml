@@ -16,11 +16,17 @@ jobs:
     - name: パックを生成
       id: gen-pack
       run: |
-        echo "pack_file_name=$(basename $(./gen-pack.sh))" >> $GITHUB_OUTPUT
+        echo "pack_file_name=$(basename $(./gen-pack.sh) .zip)" >> $GITHUB_OUTPUT
+      shell: bash
+    
+    - name: パックを解凍
+      run: |
+        cd pack
+        unzip ${{ steps.gen-pack.outputs.pack_file_name }}.zip -d ${{ steps.gen-pack.outputs.pack_file_name }}
       shell: bash
 
     - name: Artifactsにアップロード
       uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.gen-pack.outputs.pack_file_name }}
-        path: pack/${{ steps.gen-pack.outputs.pack_file_name }}
+        path: pack/${{ steps.gen-pack.outputs.pack_file_name }}/
