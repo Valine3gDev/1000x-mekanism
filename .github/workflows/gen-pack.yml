@@ -19,7 +19,7 @@ jobs:
         pack_path=$(./gen-pack.sh)
         echo $pack_path
         pack_file_name=$(basename "${pack_path}" .zip)
-        echo "pack_file_name=${pack_file_name}" | tee -a $GITHUB_ENV
+        echo "pack_file_name=${pack_file_name}" | tee -a $GITHUB_OUTPUT
       shell: bash
     
     - name: パックを解凍
