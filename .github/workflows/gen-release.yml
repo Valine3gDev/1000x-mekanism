@@ -15,6 +15,14 @@ jobs:
       contents: write
 
     steps:
+    - name: トークンを生成
+      id: app_token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.APP_ID }}
+        private-key: ${{ secrets.PRIVATE_KEY }}
+
+
     - name: リポジトリをチェックアウト
       uses: actions/checkout@v4
 
@@ -27,8 +35,9 @@ jobs:
     
     - name: コミットしタグ付きでプッシュ
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
       run: |
+        git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git config --global push.followTags true
