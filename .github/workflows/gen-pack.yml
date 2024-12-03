@@ -16,7 +16,10 @@ jobs:
     - name: パックを生成
       id: gen-pack
       run: |
-        echo "pack_file_name=$(basename $(./gen-pack.sh) .zip)" >> $GITHUB_OUTPUT
+        pack_path=$(./gen-pack.sh)
+        echo $pack_path
+        pack_file_name=$(basename "${pack_path}" .zip)
+        echo "pack_file_name=${pack_file_name}" >> $GITHUB_ENV
       shell: bash
     
     - name: パックを解凍
