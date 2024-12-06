@@ -1,4 +1,4 @@
-name: パックを指定したバージョンでリリース
+name: "手動: パックバージョンを更新しReleasesを作成"
 
 on:
   workflow_dispatch:
