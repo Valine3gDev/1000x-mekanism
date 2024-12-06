@@ -1,6 +1,5 @@
-#!node
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 if (process.argv.length < 3) {
   console.error(`使用法: ${path.basename(process.argv[1])} <バージョン>`);

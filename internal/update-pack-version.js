@@ -1,7 +1,6 @@
-#!node
-import fs from 'fs';
-import path from 'path';
-import * as utils from './utils.js';
+const fs = require('fs');
+const path = require('path');
+const utils = require('./utils.js');
 
 if (process.argv.length < 3 || process.argv.length > 4) {
   const v1 = path.basename(process.argv[1])
