@@ -38,7 +38,7 @@ jobs:
     - name: バージョンを書き換え
       if: ${{ github.event.inputs.tag != 'none' }}
       run: |
-        node internal/set-pack-version.js ${{ github.event.inputs.tag }}
+        node internal/update-pack-version.js ${{ github.event.inputs.tag }}
       shell: bash
     
     - name: コミットしタグ付きでプッシュ
