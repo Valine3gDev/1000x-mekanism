@@ -24,7 +24,7 @@ jobs:
     - name: nodeをセットアップ
       uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 20
     
     - name: リポジトリをチェックアウト
       uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
     - name: バージョンを書き換え
       if: ${{ github.event.inputs.tag != 'none' }}
       run: |
-        ./internal/set-pack-version.js ${{ github.event.inputs.tag }}
+        node internal/set-pack-version.js ${{ github.event.inputs.tag }}
       shell: bash
     
     - name: コミットしタグ付きでプッシュ
@@ -54,7 +54,7 @@ jobs:
     - name: パックを生成
       id: gen-pack
       run: |
-        echo "pack_file_name=$(./internal/gen-pack.sh)" | tee -a $GITHUB_OUTPUT
+        echo "pack_file_name=$(node internal/gen-pack.sh)" | tee -a $GITHUB_OUTPUT
       shell: bash
     
     - name: パックを解凍
