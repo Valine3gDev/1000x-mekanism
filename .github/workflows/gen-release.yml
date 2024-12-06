@@ -8,9 +8,9 @@ on:
         description: 'アップデートタイプ'
         required: true
         options:
-          - major
-          - minor
           - patch
+          - minor
+          - major
           - none
 
 jobs:
