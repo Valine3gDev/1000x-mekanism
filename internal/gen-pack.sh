@@ -23,6 +23,7 @@ const fs = require('fs');
 const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
 console.log(manifest.version);
 ")
+cp manifest.json packtmp/
 
 echoerr packtmp/overridesディレクトリを構築
 mkdir packtmp/overrides/
