@@ -16,7 +16,7 @@ jobs:
     - name: パックを生成
       id: gen-pack
       run: |
-        echo "pack_file_name=$(node internal/gen-pack.sh)" | tee -a $GITHUB_OUTPUT
+        echo "pack_file_name=$(./internal/gen-pack.sh)" | tee -a $GITHUB_OUTPUT
       shell: bash
     
     - name: パックを解凍
