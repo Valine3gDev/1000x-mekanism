@@ -19,7 +19,7 @@ const json = JSON.parse(manifest);
 /** @type {string} */
 const currentVersion = json.version;
 let {prefix, major, minor, patch} = utils.parseVersion(currentVersion);
-console.log(`現在のバージョン: ${prefix}${major}.${minor}.${patch}`);
+console.error(`現在のバージョン: ${prefix}${major}.${minor}.${patch}`);
 
 if (versionPrefix !== "" && versionPrefix !== prefix) {
   prefix = versionPrefix;
@@ -37,9 +37,8 @@ if (versionType == 'major') {
   throw new RangeError('バージョンの種類が不正です。');
 }
 const newVersion = `${versionPrefix}${major}.${minor}.${patch}`;
-console.log(`新しいバージョン: ${newVersion}`);
 
 json.version = newVersion;
 fs.writeFileSync('manifest.json', JSON.stringify(json));
 
-console.log(`バージョンを正しく変更しました`);
+console.log(`new_version=${newVersion}`);

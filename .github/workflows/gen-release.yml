@@ -36,9 +36,10 @@ jobs:
         git config --global push.followTags true
     
     - name: バージョンを書き換え
+      id: update-version
       if: ${{ github.event.inputs.tag != 'none' }}
       run: |
-        node internal/update-pack-version.js ${{ github.event.inputs.tag }}
+        node internal/update-pack-version.js ${{ github.event.inputs.tag }} | tee -a $GITHUB_OUTPUT
       shell: bash
     
     - name: コミットしタグ付きでプッシュ
@@ -47,8 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git add manifest.json
-        git commit -m 'パックバージョンを${{ github.event.inputs.tag }}に更新'
-        git tag -a ${{ github.event.inputs.tag }} -m 'パックバージョン${{ github.event.inputs.tag }}'
+        git commit -m 'パックバージョンを${{ steps.update-version.outputs.new_version }}に更新'
+        git tag -a ${{ steps.update-version.outputs.new_version }} -m 'パックバージョン${{ steps.update-version.outputs.new_version }}'
         git push
     
     - name: パックを生成
@@ -72,6 +73,6 @@ jobs:
     - name: リリースを作成
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ github.event.inputs.tag }}
+        tag_name: ${{ steps.update-version.outputs.new_version }}
         generate_release_notes: false
         files: pack/*.zip
