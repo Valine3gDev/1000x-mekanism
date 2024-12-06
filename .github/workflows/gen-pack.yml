@@ -1,4 +1,4 @@
-name: "自動: 最新のパックをArtifactsにアップロード"
+name: "自動: 最新版をArtifactsに出力"
 
 on:
   workflow_dispatch:
