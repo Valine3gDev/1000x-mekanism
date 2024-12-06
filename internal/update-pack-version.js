@@ -36,7 +36,7 @@ if (versionType == 'major') {
 } else {
   throw new RangeError('バージョンの種類が不正です。');
 }
-const newVersion = `${versionPrefix}${major}.${minor}.${patch}`;
+const newVersion = `${prefix}${major}.${minor}.${patch}`;
 
 json.version = newVersion;
 fs.writeFileSync('manifest.json', JSON.stringify(json));
