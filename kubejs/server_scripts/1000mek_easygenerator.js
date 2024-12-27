@@ -1,28 +1,25 @@
 onEvent('recipes', event => {
-    //generator
-    event.remove({output: 'mekanismgenerators:solar_generator'})
-    event.remove({output: 'mekanismgenerators:advanced_solar_generator'})
-    event.remove({output: 'mekanismgenerators:gas_burning_generator'})
-    event.remove({output: 'mekanismgenerators:wind_generator'})
-    event.remove({output: 'mekanismgenerators:solar_panel'})
-    event.remove({output: 'mekanismgenerators:heat_generator'})
-    event.remove({output: 'mekanismgenerators:bio_generator'})
-
-    //turbine
-    event.remove({output: 'mekanismgenerators:turbine_casing'})
-    event.remove({output: 'mekanismgenerators:saturating_condenser'})
-    event.remove({output: 'mekanismgenerators:turbine_blade'})
-    event.remove({output: 'mekanismgenerators:turbine_rotor'})
-    event.remove({output: 'mekanismgenerators:electromagnetic_coil'})
-
-    //boiler
-    event.remove({output: 'mekanism:superheating_element'})
-    event.remove({output: 'mekanism:pressure_disperser'})
-    event.remove({output: 'mekanism:structural_glass'})
-    event.remove({output: 'mekanism:boiler_casing'})
-
-    //fission
-    const fission = [
+    [   
+        //generator
+        'mekanismgenerators:solar_generator',
+        'mekanismgenerators:advanced_solar_generator',
+        'mekanismgenerators:gas_burning_generator',
+        'mekanismgenerators:wind_generator',
+        'mekanismgenerators:solar_panel',
+        'mekanismgenerators:heat_generator',
+        'mekanismgenerators:bio_generator',
+        //turbine
+        'mekanismgenerators:turbine_casing',
+        'mekanismgenerators:saturating_condenser',
+        'mekanismgenerators:turbine_blade',
+        'mekanismgenerators:turbine_rotor',
+        'mekanismgenerators:electromagnetic_coil',
+        //boiler
+        'mekanism:superheating_element',
+        'mekanism:pressure_disperser',
+        'mekanism:structural_glass',
+        'mekanism:boiler_casing',
+        //fission
         'mekanism:solar_neutron_activator',
         'mekanismgenerators:fission_reactor_casing',
         'mekanismgenerators:reactor_glass',
@@ -34,7 +31,7 @@ onEvent('recipes', event => {
     //fusion
     event.remove({output: 'mekanismgenerators:fusion_reactor_frame'})
 
-    //generaotr
+    //generator
     event.shapeless('mekanismgenerators:bio_generator',['mekanism:bio_fuel','iron_block'])
     event.shapeless('mekanismgenerators:heat_generator',['iron_ingot','furnace'])
     event.shapeless('mekanismgenerators:solar_panel', ['lapis_lazuli','redstone_block','#forge:glass_panes'])

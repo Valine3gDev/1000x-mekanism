@@ -1,100 +1,37 @@
 onEvent('recipes', event => {
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x2' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x8' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x32' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x128' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x512' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x2048' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x8192' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x32768' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x131072' })
-    event.remove({ id: 'compactmekanismmachines:compressed_wind_generator_x532480' })
+    let multipliers = [2, 8, 32, 128, 512, 2048, 8192, 32768, 131072, 532480]
+    multipliers.forEach((multiplier) => {
+        event.remove({ id: `compactmekanismmachines:compressed_wind_generator_x${multiplier}` })
+    })
 
     event.recipes.mekanismMetallurgicInfusing(`compactmekanismmachines:compressed_wind_generator_x2`,'2x mekanismgenerators:wind_generator', '100x mekanism:redstone')
 
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x8', [
-        ' W ',
-        'WHW',
-        ' W '
-    ],{
-        H: 'mekanism:alloy_infused',
-        W: 'compactmekanismmachines:compressed_wind_generator_x2'
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x32', [
-        ' W ',
-        'WAW',
-        ' W '
-    ],{
-        W: 'compactmekanismmachines:compressed_wind_generator_x8',
-        A: 'mekanism:steel_casing'
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x128', [
-        'EWE',
-        'WSW',
-        'EWE'
-    ],{
-        S: 'mekanism:basic_control_circuit',
-        W: 'compactmekanismmachines:compressed_wind_generator_x32',
-        E: `mekanism:fuelwood_heater`
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x512', [
-        'EWE',
-        'WEW',
-        'EWE'
-    ],{
-        E: 'mekanism:module_base',
-        W: 'compactmekanismmachines:compressed_wind_generator_x128',
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x2048', [
-        'SWS',
-        'WDW',
-        'SWS'
-    ],{
-        S: 'mekanism:seismic_vibrator',
-        W: 'compactmekanismmachines:compressed_wind_generator_x512',
-        D: 'mekanism:dynamic_valve'
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x8192', [
-        'MWM',
-        'WGW',
-        'MWM'
-    ],{
-        M: 'mekanism:thermal_evaporation_valve',
-        W: 'compactmekanismmachines:compressed_wind_generator_x2048',
-        G: `megacells:cell_component_1m`
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x32768', [
-        'HWH',
-        'WGW',
-        'HWH'
-    ],{
-        H: 'mekanism:sps_casing',
-        W: 'compactmekanismmachines:compressed_wind_generator_x8192',
-        G: `megacells:cell_component_4m`
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x131072', [
-        ' W ',
-        'WSW',
-        ' W '
-    ],{
-        W: 'compactmekanismmachines:compressed_wind_generator_x32768',
-        S: 'mekaevolution:absolute_energy_cube'
-    })
-
-    event.shaped('compactmekanismmachines:compressed_wind_generator_x532480', [
-        ' W ',
-        'WSW',
-        ' W '
-    ],{
-        W: 'compactmekanismmachines:compressed_wind_generator_x131072',
-        S: 'compactmekanismmachines:compressed_wind_generator_x8192'
-    })
+    function addWindGeneratorRecipe(result_multipliers,item1,item2){
+        event.shaped(`compactmekanismmachines:compressed_wind_generator_x${result_multipliers}`, item2==undefined?[
+            ' W ',
+            'WHW',
+            ' W '
+        ]:[
+            'SWS',
+            'WHW',
+            'SWS'
+        ],(item2==undefined)?{
+            H: item1,
+            W: `compactmekanismmachines:compressed_wind_generator_x${result_multipliers!=532480?result_multipliers/4:131072}`,
+        }:{
+            H: item1,
+            W: `compactmekanismmachines:compressed_wind_generator_x${result_multipliers!=532480?result_multipliers/4:131072}`,
+            S: item2
+        })
+    }
+    addWindGeneratorRecipe(8,'mekanism:alloy_infused')
+    addWindGeneratorRecipe(32,'mekanism:steel_casing')
+    addWindGeneratorRecipe(128,'mekanism:basic_control_circuit','mekanism:fuelwood_heater')
+    addWindGeneratorRecipe(512,'mekanism:module_base','mekanism:module_base')
+    addWindGeneratorRecipe(2048,'mekanism:dynamic_valve','mekanism:seismic_vibrator')
+    addWindGeneratorRecipe(8192,'megacells:cell_component_1m','mekanism:thermal_evaporation_valve')
+    addWindGeneratorRecipe(32768,'megacells:cell_component_4m','mekanism:sps_casing')
+    addWindGeneratorRecipe(131072,'mekaevolution:absolute_energy_cube')
+    addWindGeneratorRecipe(532480,'compactmekanismmachines:compressed_wind_generator_x8192')
 
 })
