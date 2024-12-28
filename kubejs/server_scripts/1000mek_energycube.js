@@ -1,13 +1,12 @@
 onEvent('recipes', event => {
 
 	event.remove({output: 'mekanism:energy_tablet'})
-    event.remove({output: 'mekanism:basic_energy_cube'})
-    event.remove({output: 'mekanism:advanced_energy_cube'})
-    event.remove({output: 'mekanism:elite_energy_cube'})
-    event.remove({output: 'mekanism:ultimate_energy_cube'})
 
     let cubes = ['basic_energy_cube', 'advanced_energy_cube', 'elite_energy_cube', 'ultimate_energy_cube']
     let cube_upgrade_items = ['mekanism:ingot_osmium', 'gold_ingot', 'diamond']
+    cubes.forEach((name) => {
+        event.remove({output: `mekanism:${name}`})
+    })
     let upgradeCube = (output, cube, material) => {
         event.shaped(`mekanism:${output}`,[
             ' M ',
