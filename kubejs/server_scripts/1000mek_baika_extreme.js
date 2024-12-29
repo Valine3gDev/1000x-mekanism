@@ -12,13 +12,10 @@ onEvent('recipes', event => {
      * is_kubejs:  
      *      falseまたは未定義のとき:mekanismで追加される鉱石として処理する  
      *      trueのとき:kubejsで追加される鉱石として処理する  
-     * 
-     * is_kubejs:
-     *      undefinedのとき:mekanismで追加される鉱石  
-     *      trueのとき:kubejsで追加される鉱石  
      * enriched_item_name_override:
-     *      undefined:バニラ鉱石
-     *      その他:名前の癖が強い奴ら(processing_type==0のときのみ有効)
+     *      enrichingの成果物は鉱石アイテムのIDから自動検出された値が使用されるが、これに誤りがある場合は成果物をオーバーライドできる
+     *      未定義:自動検出された値を成果物に用いる
+     *      その他:成果物を指定した値にオーバーライドする。processing_typeが0のときのみ使用できる
      */
     let processing_dict = {
         "diamond":       { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": 2, "processing_type": 1 },
