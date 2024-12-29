@@ -1,14 +1,18 @@
 // Super Ores 互換性
 onEvent('recipes', event => {
     /**
-     * ore_multiplier:superoresで設定されている鉱石の倍率  [normal,deepslate,nether]
+     * 各鉱石資源ごとに、どんな方法で処理できるか、また何倍化できるか、値をオーバーライドする。
      * output_multiplier:  
-     *      processing_type==0:[enriching得られるingotやgem等の数,inejectすると得られるアイテム数,purifyingすると得られるアイテムの数]  
-     *      processing_type==1:enrichすると得られるアイテムの数  
+     *      processing_type==0:[enrichingすると得られるingotやgem等の数,inejectすると得られるアイテム数,purifyingすると得られるアイテムの数]  
+     *      processing_type==1:enrichingすると得られるアイテムの数  
      * processing_type:  
-     *      0のとき:enriching,injecting,purifyingができる。  
-     *      1のとき:injecting,purifyingができない  
+     *     実行できる加工方法を定義する
+     *      1のとき:enrichingのみできる。
      *      2のとき:enriching,injecting,purifyingができる。ただし、compressed~系に処理したらなるもの  output_multiplierの設定不要。
+     * is_kubejs:  
+     *      falseまたは未定義のとき:mekanismで追加される鉱石として処理する  
+     *      trueのとき:kubejsで追加される鉱石として処理する  
+     * 
      * is_kubejs:
      *      undefinedのとき:mekanismで追加される鉱石  
      *      trueのとき:kubejsで追加される鉱石  
@@ -22,7 +26,7 @@ onEvent('recipes', event => {
         "coal":          { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": 2, "processing_type": 1 },
         "lapis_lazuli":  { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": 12, "processing_type": 1 },
         "redstone":      { "ore_multiplier": {"normal":4,"deepslate":4}, "output_multiplier": [12, 3, 6], "processing_type": 0 },
-    //何故かもともとのコードからケルタスのレシピの登録ないのに倍加倍率の設定はあった。理由は知らん。前のコードははーむすさんが書きました。
+    //何故かもともとのコードからケルタスのレシピの登録ないのに倍加倍率の設定はあった。理由は知らん。前のコードははーすむさんが書きました。
         "certus_quartz": { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": [6, 4, 8], "processing_type": 0 },
         "quartz":        { "ore_multiplier": {"nether":3              }, "output_multiplier": [6, 4, 8], "processing_type": 0 },
         "fluorite":      { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": [6, 4, 8], "processing_type": 0, 
@@ -32,7 +36,7 @@ onEvent('recipes', event => {
     let appendix_extreme = (input_item) => {
         let ore_regex = /superores:super_(deepslate|nether)?_?(.+)_ore/.exec(input_item)
         let ore_kind = ore_regex[2]
-        let ore_type = (ore_regex[1]==undefined)?"normal":ore_regex[1]
+        let ore_type = (ore_regex[1]==undefined) ? "normal" : ore_regex[1]
         let is_registered_on_processing_dict = (ore_kind in processing_dict)
         let multiplier = is_registered_on_processing_dict ? processing_dict[ore_kind]["ore_multiplier"][ore_type] : 3
         let processing_type = is_registered_on_processing_dict ? processing_dict[ore_kind]["processing_type"] : 2
@@ -76,9 +80,9 @@ onEvent('recipes', event => {
                 '1x mekanism:oxygen'
             )
         } else if (processing_type == 2) {
-            let is_kubejs = is_registered_on_processing_dict && processing_dict[ore_kind]["is_kubejs"]==true
+            let is_kubejs = is_registered_on_processing_dict && (processing_dict[ore_kind]["is_kubejs"]==true)
             event.recipes.mekanism.enriching(
-                `${Math.floor(multiplier * 9)}x ${is_kubejs ? "kubejs":"mekanism"}:dust_${ore_kind}`,
+                `${Math.floor(multiplier * 9)}x ${is_kubejs ? "kubejs" : "mekanism"}:dust_${ore_kind}`,
                 input_item
             )
             event.recipes.mekanism.purifying(
@@ -107,7 +111,7 @@ onEvent('recipes', event => {
                 }
             })
         } else {
-            Error("processing_type not found")
+            throw new RangeError("processing_type must be between 0 and 2")  
         }
     }
     // 最低倍率は1まで、1刻みで設定 (1で 製錬鉱石は通常の[9/8]倍、濃縮やレッドストーンは通常の1倍）
