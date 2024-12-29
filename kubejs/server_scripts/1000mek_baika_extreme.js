@@ -31,7 +31,7 @@ onEvent('recipes', event => {
                             "enriched_item_name_override": "mekanism:fluorite_gem" },
         "iridium":       { "ore_multiplier": {"normal":3              }, "processing_type": 2,"is_kubejs": true },
     }
-    let appendix_extreme = (input_item) => {
+    const appendix_extreme = (input_item) => {
         let ore_regex = /superores:super_(deepslate|nether)?_?(.+)_ore/.exec(input_item)
         let ore_kind = ore_regex[2]
         let ore_type = (ore_regex[1]==undefined) ? "normal" : ore_regex[1]
