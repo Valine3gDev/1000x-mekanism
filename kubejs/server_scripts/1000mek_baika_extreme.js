@@ -3,21 +3,22 @@ onEvent('recipes', event => {
     /**
      * 各鉱石資源ごとに、どんな方法で処理できるか、また何倍化できるか、値をオーバーライドする。
      * output_multiplier:  
-     *      processing_type==0:[enrichingすると得られるingotやgem等の数,inejectすると得られるアイテム数,purifyingすると得られるアイテムの数]  
-     *      processing_type==1:enrichingすると得られるアイテムの数  
+     *      processing_type==0のとき:[enrichingすると得られるingotやgem等の数,inejectすると得られるアイテム数,purifyingすると得られるアイテムの数]  
+     *      processing_type==1のとき:enrichingすると得られるアイテムの数  
      * processing_type:  
      *     実行できる加工方法を定義する
+     *      0のとき:enriching,injecting,purifyingができる。
      *      1のとき:enrichingのみできる。
      *      2のとき:enriching,injecting,purifyingができる。ただし、compressed~系に処理したらなるもの  output_multiplierの設定不要。
      * is_kubejs:  
      *      falseまたは未定義のとき:mekanismで追加される鉱石として処理する  
      *      trueのとき:kubejsで追加される鉱石として処理する  
      * enriched_item_name_override:
-     *      enrichingの成果物は鉱石アイテムのIDから自動検出された値が使用されるが、これに誤りがある場合は成果物をオーバーライドできる
+     *     enrichingの成果物は鉱石アイテムのIDから自動検出された値が使用されるが、これに誤りがある場合は成果物をオーバーライドできる
      *      未定義:自動検出された値を成果物に用いる
      *      その他:成果物を指定した値にオーバーライドする。processing_typeが0のときのみ使用できる
      */
-    let processing_dict = {
+    const processing_dict = {
         "diamond":       { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": 2, "processing_type": 1 },
         "emerald":       { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": 2, "processing_type": 1 },
         "coal":          { "ore_multiplier": {"normal":3,"deepslate":3}, "output_multiplier": 2, "processing_type": 1 },
@@ -102,7 +103,7 @@ onEvent('recipes', event => {
                     "gas": "mekanism:sulfuric_acid"
                 },
                 output: {
-                    "slurry": "mek1000:dirty_compressed_" + ore_kind,
+                    "slurry": `mek1000:dirty_compressed_${ore_kind}`,
                     "amount": Math.floor(multiplier * 67.5) * 20,
                     "chemicalType": "slurry"
                 }
@@ -114,7 +115,7 @@ onEvent('recipes', event => {
     // 最低倍率は1まで、1刻みで設定 (1で 製錬鉱石は通常の[9/8]倍、濃縮やレッドストーンは通常の1倍）
     // Super Oresの倍率に依存させる
     let ores = []
-    let ores_normal = [ // deepslateな鉱石とそうでない鉱石があるやつら
+    const ores_normal = [ // deepslateな鉱石とそうでない鉱石があるやつら
         "coal",
         "copper",
         "diamond",
@@ -128,7 +129,7 @@ onEvent('recipes', event => {
         "uranium",
         "fluorite"
     ]
-    let ores_other = [ // その他
+    const ores_other = [ // その他
         "nether_gold",
         "iridium",
         "nether_quartz"
