@@ -3,7 +3,7 @@ onEvent('recipes', event => {
     /**
      * 各鉱石資源ごとに、どんな方法で処理できるか、また何倍化できるか、値をオーバーライドする。
      * output_multiplier:  
-     *      processing_type==0のとき:[enrichingすると得られるingotやgem等の数,inejectすると得られるアイテム数,purifyingすると得られるアイテムの数]  
+     *      processing_type==0のとき:[enrichingすると得られるingotやgem等の数,injectすると得られるアイテム数,purifyingすると得られるアイテムの数]  
      *      processing_type==1のとき:enrichingすると得られるアイテムの数  
      * processing_type:  
      *     実行できる加工方法を定義する
