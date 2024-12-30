@@ -87,6 +87,11 @@ onEvent('recipes', event => {
                 ],{
                     c:`mek1000:${type}_crystal_20`
                 }).id(`mek1000:${type}_disassembling_20to9`)
+            event.shaped(`9x ${item_1}`,[
+                    'c'
+                ],{
+                    c:item_9
+                }).id(`mek1000:${type}_disassembling_9to1`)
         }
     }
     

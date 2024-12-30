@@ -31,7 +31,7 @@ onEvent('recipes', event => {
       S: `mekanism:energized_smelter`
     })
 
-    event.recipes.mekanism.enriching( `minecraft:blaze_rod`,`2x minecraft:blaze_powder`)
+    event.recipes.mekanism.enriching( `minecraft:blaze_rod`,`5x minecraft:blaze_powder`)
     event.custom({
         "type": "quarryplus:workbench_recipe",
         "subType": "default",
