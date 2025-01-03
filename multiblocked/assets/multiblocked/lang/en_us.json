@@ -11,6 +11,8 @@
     "block.mek1000.cobble_generator":"Cobble Generator",
     "block.mek1000.fusion_controller":"Fusion Controller",
     "block.mek1000.fusion_energy_input":"Fusion Energy Input",
+    "block.mek1000.fusion_casing": "Fusion Casing",
+    "block.mek1000.fusion_coil": "Fusion Coil",
     "block.mek1000.perfect_gas_input":"Perfect Gas Input",
     "block.mek1000.fluid_input":"Fluid Input",
     "block.mek1000.singurarity_generator":"Singurarity Generator",

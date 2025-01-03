@@ -14,7 +14,14 @@
     "item.mek1000.ldpe": "LDPEシート",
     "item.mek1000.stray_cat": "迷いネコの祝福",
     "item.mek1000.tiny_antimatter": "小分けにされた反物質",
+    "item.mek1000.polonium_synced": "蛍石シンギュラリティーに同期化された40倍ポロニウムペレット",
+    "item.mek1000.illuminate_alloy": "照陽合金",
+    "item.mek1000.superheated_alloy": "過熱合金",
+    "item.mek1000.antinomic_alloy": "反響合金",
+    "item.mek1000.cosmic_alloy": "星雲合金",
 
+    "fluid.mek1000.liquid_antimatter": "液化反物質",
+    
     "effect.mek1000.straycat_bressing": "迷いネコの祝福",
 
     "gas.mek1000valinium.anti_hydrogen": "反水素ガス",

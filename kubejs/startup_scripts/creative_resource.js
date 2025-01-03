@@ -81,7 +81,7 @@ onEvent('block.registry', event => {
           .requiresTool(true)
           .texture('up','mek1000:block/fusion_coil_top')
           .texture('down','mek1000:block/fusion_coil_top')
-          event.create('mek1000:fusion_casing')
+    event.create('mek1000:fusion_casing')
           .material('metal')
           .hardness(5.0)
           .displayName('Fusion Casing') // No longer required in 1.18.2+
