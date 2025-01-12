@@ -38,10 +38,33 @@ onEvent('recipes', event => {
         "itemInput":{"item":"mekanism:shard_iron"},
         "fluidInput":{"amount":75,"fluid":"mekanism:hydrogen_chloride"},
         "gasInput":{"amount":25,"gas":"mekanism:sulfuric_acid"},
-        "energyRequired":1,"duration":1,
+        "energyRequired":10000,"duration":10,
         "itemOutput":{"item":"mekanism:shard_iron"},
+        "gasOutput":{"gas":"mek1000:aqua_regia","amount":5}
+    })
+    event.custom({"type":"mekanism:reaction",
+        "itemInput":{"item":"mekanism:shard_gold"},
+        "fluidInput":{"amount":75,"fluid":"mekanism:hydrogen_chloride"},
+        "gasInput":{"amount":25,"gas":"mek1000:nitric_acid"},
+        "energyRequired":1,"duration":1,
+        "itemOutput":{"item":"mekanism:shard_gold"},
         "gasOutput":{"gas":"mek1000:aqua_regia","amount":100}
     })
+
+    // Add: 硝酸 
+    // mekanism:nutritional_paste
+    event.custom({"type":"mekanism:reaction",
+        "itemInput":{"item":"mekanism:shard_copper"},
+        "fluidInput":{"amount":1000,"fluid":"mekanism:nutritional_paste"},
+        "gasInput":{"amount":10,"gas":"mekanism:water_vapor"},
+        "energyRequired":1000,"duration":100,
+        "itemOutput":{"item":"mekanism:shard_copper"},
+        "gasOutput":{"gas":"mek1000:no2","amount":300}
+    })
+    event.custom({
+        type:"mekanism:chemical_infusing","chemicalType":"gas",leftInput:{"gas":"mek1000:no2","amount":1},rightInput:{"gas":"mekanism:water_vapor","amount":1},output:{"gas":"mek1000:nitric_acid","amount":1}
+    })
+
 
     let advanced_processing_mk2 = (type,outputs_5,mode,super_ore,super_dore,super_nore) => {
         //スタートアップ(鉱石->各種中間生成物へ):
@@ -49,21 +72,21 @@ onEvent('recipes', event => {
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"tag":`forge:raw_materials/${type}`},
             "fluidInput":{"amount":75,"tag":"minecraft:water"},
-            "gasInput":{"amount":450,"gas":"mek1000:active_aqua_regia"},
+            "gasInput":{"amount":90,"gas":"mek1000:active_aqua_regia"},
             "energyRequired":10,"duration":2,
             "itemOutput":{"item":`mek1000:purified_${type}_rawore`,"amount":6}
         })
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"tag":`forge:ores/${type}`},
             "fluidInput":{"amount":100,"tag":"minecraft:water"},
-            "gasInput":{"amount":600,"gas":"mek1000:active_aqua_regia"},
+            "gasInput":{"amount":120,"gas":"mek1000:active_aqua_regia"},
             "energyRequired":10,"duration":6,
             "itemOutput":{"item":`mek1000:purified_${type}_rawore`,"amount":8}
         })
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"tag":`forge:storage_blocks/raw_${type}`},
             "fluidInput":{"amount":675,"tag":"minecraft:water"},
-            "gasInput":{"amount":4050,"gas":"mek1000:active_aqua_regia"},
+            "gasInput":{"amount":810,"gas":"mek1000:active_aqua_regia"},
             "energyRequired":10,"duration":18,
             "itemOutput":{"item":`mek1000:compressed_purified_${type}_rawore`,"amount":6}
         })
@@ -71,21 +94,21 @@ onEvent('recipes', event => {
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"tag":`forge:raw_materials/${type}`},
             "fluidInput":{"amount":6,"tag":"minecraft:water"},
-            "gasInput":{"amount":6,"gas":"mekanism:antimatter"},
+            "gasInput":{"amount":3,"gas":"mekanism:antimatter"},
             "energyRequired":120,"duration":20,
             "gasOutput":{"gas":"mek1000:active_"+type,"amount":30}
         })
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"tag":`forge:ores/${type}`},
             "fluidInput":{"amount":8,"tag":"minecraft:water"},
-            "gasInput":{"amount":8,"gas":"mekanism:antimatter"},
+            "gasInput":{"amount":4,"gas":"mekanism:antimatter"},
             "energyRequired":160,"duration":20,
             "gasOutput":{"gas":"mek1000:active_"+type,"amount":40}
         })
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"tag":`forge:storage_blocks/raw_${type}`},
             "fluidInput":{"amount":54,"tag":"minecraft:water"},
-            "gasInput":{"amount":54,"gas":"mekanism:antimatter"},
+            "gasInput":{"amount":27,"gas":"mekanism:antimatter"},
             "energyRequired":1080,"duration":20,
             "gasOutput":{"gas":"mek1000:active_"+type,"amount":270}
         })
@@ -94,14 +117,14 @@ onEvent('recipes', event => {
             event.custom({"type":"mekanism:reaction",
                 "itemInput":{"item":`superores:super_${type}_ore`},
                 "fluidInput":{"amount":400,"tag":"minecraft:water"},
-                "gasInput":{"amount":2400,"gas":"mek1000:active_aqua_regia"},
+                "gasInput":{"amount":600,"gas":"mek1000:active_aqua_regia"},
                 "energyRequired":50,"duration":6,
                 "itemOutput":{"item":`mek1000:purified_${type}_rawore`,"amount":40}
             })
             event.custom({"type":"mekanism:reaction",
                 "itemInput":{"item":`superores:super_${type}_ore`},
                 "fluidInput":{"amount":32,"tag":"minecraft:water"},
-                "gasInput":{"amount":32,"gas":"mekanism:antimatter"},
+                "gasInput":{"amount":16,"gas":"mekanism:antimatter"},
                 "energyRequired":800,"duration":20,
                 "gasOutput":{"gas":"mek1000:active_"+type,"amount":200}
             })
@@ -109,14 +132,14 @@ onEvent('recipes', event => {
             event.custom({"type":"mekanism:reaction",
                 "itemInput":{"item":`superores:super_deepslate_${type}_ore`},
                 "fluidInput":{"amount":400,"tag":"minecraft:water"},
-                "gasInput":{"amount":2400,"gas":"mek1000:active_aqua_regia"},
+                "gasInput":{"amount":600,"gas":"mek1000:active_aqua_regia"},
                 "energyRequired":50,"duration":6,
                 "itemOutput":{"item":`mek1000:purified_${type}_rawore`,"amount":40}
             })
             event.custom({"type":"mekanism:reaction",
                 "itemInput":{"item":`superores:super_deepslate_${type}_ore`},
                 "fluidInput":{"amount":32,"tag":"minecraft:water"},
-                "gasInput":{"amount":32,"gas":"mekanism:antimatter"},
+                "gasInput":{"amount":16,"gas":"mekanism:antimatter"},
                 "energyRequired":800,"duration":20,
                 "gasOutput":{"gas":"mek1000:active_"+type,"amount":200}
             })
@@ -124,14 +147,14 @@ onEvent('recipes', event => {
             event.custom({"type":"mekanism:reaction",
                 "itemInput":{"item":`superores:super_nether_${type}_ore`},
                 "fluidInput":{"amount":400,"tag":"minecraft:water"},
-                "gasInput":{"amount":2400,"gas":"mek1000:active_aqua_regia"},
+                "gasInput":{"amount":600,"gas":"mek1000:active_aqua_regia"},
                 "energyRequired":50,"duration":6,
                 "itemOutput":{"item":`mek1000:purified_${type}_rawore`,"amount":40}
             })
             event.custom({"type":"mekanism:reaction",
                 "itemInput":{"item":`superores:super_nether_${type}_ore`},
                 "fluidInput":{"amount":32,"tag":"minecraft:water"},
-                "gasInput":{"amount":32,"gas":"mekanism:antimatter"},
+                "gasInput":{"amount":16,"gas":"mekanism:antimatter"},
                 "energyRequired":800,"duration":20,
                 "gasOutput":{"gas":"mek1000:active_"+type,"amount":200}
             })
@@ -171,7 +194,7 @@ onEvent('recipes', event => {
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"item":`mek1000:crystalized_${type}_rawore`},
             "fluidInput":{"amount":75,"tag":"minecraft:water"},
-            "gasInput":{"amount":600,"gas":"mek1000:active_aqua_regia"},
+            "gasInput":{"amount":100,"gas":"mek1000:active_aqua_regia"},
             "energyRequired":10,"duration":3,
             "itemOutput":{"item":`mek1000:compressed_purified_${type}_rawore`,"amount":1}
         })
@@ -222,14 +245,14 @@ onEvent('recipes', event => {
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"item":'ultimatesolarpanels:iridium_ore'},
             "fluidInput":{"amount":100,"tag":"minecraft:water"},
-            "gasInput":{"amount":600,"gas":"mek1000:active_aqua_regia"},
+            "gasInput":{"amount":120,"gas":"mek1000:active_aqua_regia"},
             "energyRequired":10,"duration":6,
             "itemOutput":{"item":`mek1000:purified_iridium_rawore`,"amount":8}
         })
         event.custom({"type":"mekanism:reaction",
             "itemInput":{"item":'ultimatesolarpanels:iridium_ore'},
             "fluidInput":{"amount":8,"tag":"minecraft:water"},
-            "gasInput":{"amount":8,"gas":"mekanism:antimatter"},
+            "gasInput":{"amount":4,"gas":"mekanism:antimatter"},
             "energyRequired":160,"duration":20,
             "gasOutput":{"gas":"mek1000:active_iridium","amount":40}
         })

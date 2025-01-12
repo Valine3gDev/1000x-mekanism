@@ -15,6 +15,13 @@
     "item.mek1000.ldpe": "LDPE Wrapping Film",
     "item.mek1000.stray_cat": "Stray Cat's Bressing",
     "item.mek1000.tiny_antimatter": "Tiny Antimatter Pellet",
+    "item.mek1000.polonium_synced": "Synced Polonium Pellet w/ fluorite (40x packed into package)",
+    "item.mek1000.illuminate_alloy": "Illuminate Alloy",
+    "item.mek1000.superheated_alloy": "Superheated Alloy",
+    "item.mek1000.antinomic_alloy": "Antinomic Alloy",
+    "item.mek1000.cosmic_alloy": "Cosmic Alloy",
+    
+    "fluid.mek1000.liquid_antimatter": "Liquid Antimatter",
     
     "effect.mek1000.straycat_bressing": "Bressing from StrayCat",
 

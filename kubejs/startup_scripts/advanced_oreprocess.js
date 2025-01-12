@@ -41,6 +41,10 @@ onEvent(`item.registry`, event => {
         }
     })
 
+    
+    // Synced Polonium
+    event.create(`mek1000:polonium_synced`).texture(`mekanism:item/pellet_polonium`).glow(true).tooltip(`WTF too long name`)
+
 })
 
 onEvent(`mekanism.gas.registry`, event => {
@@ -49,14 +53,18 @@ onEvent(`mekanism.gas.registry`, event => {
     event.create(`mek1000:activated_redstone`).displayName("Activator Redstone").color(0xf05050)
     event.create(`mek1000:active_aqua_regia`).displayName("Activated Aqua Regia").color(0xffff80).radioactivity(0.015)
 
+    // 硝酸用各種ガス
+    event.create(`mek1000:no2`).displayName("Nitrogen Dioxide").color(0xe000b4)
+    event.create(`mek1000:nitric_acid`).displayName("Nitric Acid").color(0xe030e4)
+
     //各種活性蒸気
-    event.create(`mek1000:active_iron`).displayName("Active Compressed Iron Gas").color(0xffff80)
-    event.create(`mek1000:active_copper`).displayName("Active Compressed Copper Gas").color(0xffff80)
+    event.create(`mek1000:active_iron`).displayName("Active Compressed Iron Gas").color(0xf5f5f5)
+    event.create(`mek1000:active_copper`).displayName("Active Compressed Copper Gas").color(0xdaa520)
     event.create(`mek1000:active_gold`).displayName("Active Compressed Gold Gas").color(0xF2CD67)
     event.create(`mek1000:active_osmium`).displayName("Active Compressed Osmium Gas").color(0x52BDCA)
     event.create(`mek1000:active_tin`).displayName("Active Compressed Tin Gas").color(0xCCCCD9)
-    event.create(`mek1000:active_lead`).displayName("Active Compressed Lead Gas").color(0xffff80)
-    event.create(`mek1000:active_uranium`).displayName("Active Compressed Uranium Gas").color(0xffff80)
+    event.create(`mek1000:active_lead`).displayName("Active Compressed Lead Gas").color(0x5f9ea0)
+    event.create(`mek1000:active_uranium`).displayName("Active Compressed Uranium Gas").color(0x98fb98)
     event.create(`mek1000:active_iridium`).displayName("Active Compressed Iridium Gas").color(0xffff80)
     
     event.create(`mek1000:active_redstone`).displayName("Active Compressed Redstone Gas").color(0xff0f0f)
@@ -69,13 +77,13 @@ onEvent(`mekanism.gas.registry`, event => {
     event.create(`mek1000:active_emerald`).displayName("Active Compressed Emerald Gas").color(0x22f050)
     event.create(`mek1000:active_lapis`).displayName("Active Compressed Lapis Gas").color(0x3333f0)
     
-    event.create(`mek1000:purified_iron`).displayName("Purified Compressed Iron Gas").color(0xffff80)
-    event.create(`mek1000:purified_copper`).displayName("Purified Compressed Copper Gas").color(0xffff80)
+    event.create(`mek1000:purified_iron`).displayName("Purified Compressed Iron Gas").color(0xf5f5f5)
+    event.create(`mek1000:purified_copper`).displayName("Purified Compressed Copper Gas").color(0xdaa520)
     event.create(`mek1000:purified_gold`).displayName("Purified Compressed Gold Gas").color(0xF2CD67)
     event.create(`mek1000:purified_osmium`).displayName("Purified Compressed Osmium Gas").color(0x52BDCA)
     event.create(`mek1000:purified_tin`).displayName("Purified Compressed Tin Gas").color(0xCCCCD9)
-    event.create(`mek1000:purified_lead`).displayName("Purified Compressed Lead Gas").color(0xffff80)
-    event.create(`mek1000:purified_uranium`).displayName("Purified Compressed Uranium Gas").color(0xffff80)
+    event.create(`mek1000:purified_lead`).displayName("Purified Compressed Lead Gas").color(0x5f9ea0)
+    event.create(`mek1000:purified_uranium`).displayName("Purified Compressed Uranium Gas").color(0x98fb98)
     event.create(`mek1000:purified_iridium`).displayName("Purified Compressed Iridium Gas").color(0xffff80)
 
     event.create(`mek1000:purified_redstone`).displayName("Purified Compressed Redstone Gas").color(0xff0f0f)
@@ -101,7 +109,7 @@ onEvent(`mekanism.slurry.registry`, event => {
     event.create(`mek1000:clean_emerald`).texture("kubejs:slurry/clean").color(0x22f050)
 
     let types = [ // ["name",0x color]
-        ["iron",0xffff91],["copper",0xffff91],["gold",0xffdedb],["osmium",0x63cedb],["tin",0xddddea],["lead",0xffff91],["uranium",0xffff91],["iridium",0xf3ff80],
+        ["iron",0xfafafa],["copper",0xdea924],["gold",0xffdedb],["osmium",0x63cedb],["tin",0xddddea],["lead",0x63a2a4],["uranium",0x9cff9c],["iridium",0xf3ff80],
         ["redstone",0xff2020],["quartz",0xffc0b1],["certus_quartz",0xb1c0ff],["fluorite",0xffb0ff],
         ["coal",0x444444],["lapis",0x4444ff],["diamond",0x33b1ff],["emerald",0x33ff61]]
     types.forEach(type=>{

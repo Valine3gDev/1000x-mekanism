@@ -122,22 +122,22 @@ onEvent('item.registry', event => {
 // {"name": ,"color":}
 onEvent('mekanism.slurry.registry', event => {
     //通常圧縮懸濁液 (よごれてる):
-    event.create('mek1000:dirty_compressed_iron').texture("kubejs:slurry/dirty").color(0xf0f8ff)
-    event.create('mek1000:dirty_compressed_copper').texture("kubejs:slurry/dirty").color(0xf0f8ff)
+    event.create('mek1000:dirty_compressed_iron').texture("kubejs:slurry/dirty").color(0xf0f0f0)
+    event.create('mek1000:dirty_compressed_copper').texture("kubejs:slurry/dirty").color(0xd8a31e)
     event.create('mek1000:dirty_compressed_gold').texture("kubejs:slurry/dirty").color(0xF2CD67)
     event.create('mek1000:dirty_compressed_osmium').texture("kubejs:slurry/dirty").color(0x52BDCA)
     event.create('mek1000:dirty_compressed_tin').texture("kubejs:slurry/dirty").color(0xCCCCD9)
-    event.create('mek1000:dirty_compressed_lead').texture("kubejs:slurry/dirty").color(0xf0f8ff)
-    event.create('mek1000:dirty_compressed_uranium').texture("kubejs:slurry/dirty").color(0xf0f8ff)
+    event.create('mek1000:dirty_compressed_lead').texture("kubejs:slurry/dirty").color(0x5d9c9e)
+    event.create('mek1000:dirty_compressed_uranium').texture("kubejs:slurry/dirty").color(0x96f996)
 
     //追加パック 圧縮懸濁液（きれい）:
-    event.create('mek1000:clean_compressed_iron').texture("kubejs:slurry/clean").color(0xf0f8ff)
-    event.create('mek1000:clean_compressed_copper').texture("kubejs:slurry/clean").color(0xf0f8ff)
+    event.create('mek1000:clean_compressed_iron').texture("kubejs:slurry/clean").color(0xf0f0f0)
+    event.create('mek1000:clean_compressed_copper').texture("kubejs:slurry/clean").color(0xd8a31e)
     event.create('mek1000:clean_compressed_gold').texture("kubejs:slurry/clean").color(0xF2CD67)
     event.create('mek1000:clean_compressed_osmium').texture("kubejs:slurry/clean").color(0x52BDCA)
     event.create('mek1000:clean_compressed_tin').texture("kubejs:slurry/clean").color(0xCCCCD9)
-    event.create('mek1000:clean_compressed_lead').texture("kubejs:slurry/clean").color(0xf0f8ff)
-    event.create('mek1000:clean_compressed_uranium').texture("kubejs:slurry/clean").color(0xf0f8ff)
+    event.create('mek1000:clean_compressed_lead').texture("kubejs:slurry/clean").color(0x5d9c9e)
+    event.create('mek1000:clean_compressed_uranium').texture("kubejs:slurry/clean").color(0x96f996)
 
     //追加パック2 圧縮イリジウムパック（両方）
     event.create('mek1000:dirty_compressed_iridium').texture("kubejs:slurry/dirty").color(0xf0f8ff)

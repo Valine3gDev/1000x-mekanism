@@ -34,4 +34,16 @@ onEvent('recipes', event => {
   qio('mekaevolution:qio_drive_infinite','mekaevolution:infinite_control_circuit','mekaevolution:qio_drive_cosmic','mekaevolution:infinite_energy_cube')
   qio('mekanism:qio_drive_array','mekanism:elite_control_circuit','mekanism:block_refined_obsidian','ae2:drive')
   qio('mekanism:qio_dashboard','mekaddelement:dust_calcium_oxide','ae2:name_press','ae2:crafting_terminal')
+
+
+  // short cut!
+  event.shaped('4x mekaevolution:qio_drive_supreme',[
+    'ede',
+    'dsd',
+    'ede'
+  ],{
+    s:'mek1000:redstone_singularity',
+    d:'mekanism:qio_drive_base',
+    e:'mek1000:superheated_alloy'
+  })
 })

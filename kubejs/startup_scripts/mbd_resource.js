@@ -21,7 +21,7 @@ onEvent('item.registry', event => {
     event.create('mek1000:the_null').displayName('Null').tooltip('※仕様です')
     event.create('mek1000:ldpe')
     event.create('mek1000:stray_cat').texture(`mek1000:item/cat_crystal`)
-    event.create('mek1000:tiny_antimatter').texture("mek1000:item/ldpe").color(0, 0xaa99aa).item(itemForm => {itemForm.color(0, 0xaa99aa)})
+    event.create('mek1000:tiny_antimatter').texture("mek1000:item/ldpe").color(0, 0xaa99aa).item(itemForm => {itemForm.color(0, 0xaa99aa)}).glow(true)
 })
 onEvent('fluid.registry', event => {
     event.create('mek1000:condenced_lux').bucketColor(0xdeb887).thinTexture(0xdeb887)
