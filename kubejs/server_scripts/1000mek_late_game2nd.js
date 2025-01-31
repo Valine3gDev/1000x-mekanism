@@ -68,7 +68,7 @@ onEvent('recipes', event => {
   event.recipes.lazierae2.grinder('mek1000:dust_amethyst', 'minecraft:amethyst_shard').processingTime(20).energyCost(500);
   event.recipes.mekanism.crushing('mek1000:dust_amethyst', 'minecraft:amethyst_shard')
   event.recipes.lazierae2.aggregator('2x minecraft:amethyst_shard', ['minecraft:sand','mek1000:dust_amethyst']).processingTime(20).energyCost(500);
-  event.recipes.lazierae2.etcher('4x mek1000:the_null', ['mekaevolution:qio_drive_infinite','4x megacells:bulk_cell_component','4x megacells:cell_component_256m']).processingTime(20).energyCost(40000);
+  event.recipes.lazierae2.etcher('4x mek1000:the_null', ['#mek1000:qio/t8','4x megacells:bulk_cell_component','4x megacells:cell_component_256m']).processingTime(20).energyCost(40000);
   
   
   function cobble(output,input,input2){event.shaped(output,[
@@ -141,7 +141,7 @@ onEvent('recipes', event => {
     'tdt',
     'cte'
   ],{
-  t:'mekaevolution:qio_drive_infinite',
+  t:'#mek1000:qio/t8',
   a:'mekanism:creative_fluid_tank',
   b:Item.of('mekanism:creative_energy_cube', '{mekData:{EnergyContainers:[{Container:0b,stored:"18446744073709551615.9999"}]}}'),
   c:'ae2:creative_energy_cell',
