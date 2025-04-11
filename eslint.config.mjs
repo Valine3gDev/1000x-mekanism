@@ -34,6 +34,7 @@ export default defineConfig([
 
             // Stylistic rules
             "@stylistic/array-bracket-newline": "error",
+            "@stylistic/max-statements-per-line": "warn",
         },
     },
 ]);
