@@ -70,7 +70,17 @@ onEvent("recipes", (event) => {
     event.smelting("16x mekanism:pressure_disperser", "mekanism:block_steel");
 
     // fusion
-    event.custom({ type: "mekanism:reaction", itemInput: { ingredient: { item: "megacells:bulk_cell_component" } }, fluidInput: { amount: 2000, fluid: "integrateddynamics:liquid_chorus" }, gasInput: { amount: 100, gas: "mekanism:fissile_fuel" }, energyRequired: 200, duration: 400, itemOutput: { item: "mekanismgenerators:fusion_reactor_frame" } }),
+    event.custom({
+        type: "mekanism:reaction",
+        itemInput: {
+            ingredient: { item: "megacells:bulk_cell_component" },
+        },
+        fluidInput: { amount: 2000, fluid: "integrateddynamics:liquid_chorus" },
+        gasInput: { amount: 100, gas: "mekanism:fissile_fuel" },
+        energyRequired: 200,
+        duration: 400,
+        itemOutput: { item: "mekanismgenerators:fusion_reactor_frame" },
+    });
     event.custom({
         type: "mekanism:nucleosynthesizing",
         itemInput: { ingredient: { item: "mekanism:steel_casing" } },

@@ -16,5 +16,5 @@ onEvent("recipes", (event) => {
         "minecraft:copper_ore", "minecraft:deepslate_copper_ore",
         "minecraft:ancient_debris",
     ];
-    ore.forEach((block) => { event.remove({ output: block }); });
+    ore.forEach(block => event.remove({ output: block }));
 });

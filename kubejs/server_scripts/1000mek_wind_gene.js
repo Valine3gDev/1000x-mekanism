@@ -15,7 +15,7 @@ onEvent("recipes", (event) => {
             H: item1,
             W: `compactmekanismmachines:compressed_wind_generator_x${windGenPreviousMultiplier}`,
         };
-        if (item2 == undefined) {
+        if (item2 === undefined) {
             shape.push(
                 " W ",
                 "WHW",

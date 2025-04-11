@@ -1,5 +1,5 @@
 onEvent("recipes", (event) => {
-    event.recipes.mekanism.metallurgic_infusing("integrateddynamics:crystalized_menril_block", "#forge:nuggets/osmium", "1x mekanism:redstone"),
+    event.recipes.mekanism.metallurgic_infusing("integrateddynamics:crystalized_menril_block", "#forge:nuggets/osmium", "1x mekanism:redstone");
 
     event.shaped("64x integrateddynamics:variable",
         [

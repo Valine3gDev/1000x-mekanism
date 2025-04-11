@@ -34,11 +34,11 @@ onEvent("recipes", (event) => {
     const appendix_extreme = (input_item) => {
         const ore_regex = /superores:super_(deepslate|nether)?_?(.+)_ore/.exec(input_item);
         const ore_kind = ore_regex[2];
-        const ore_type = (ore_regex[1] == undefined) ? "normal" : ore_regex[1];
+        const ore_type = (ore_regex[1] === undefined) ? "normal" : ore_regex[1]; // メモ: 配列の範囲外へアクセスすると例外の代わりにundefinedが返ってくる丁寧な仕様
         const is_registered_on_processing_dict = (ore_kind in processing_dict);
         const multiplier = is_registered_on_processing_dict ? processing_dict[ore_kind]["ore_multiplier"][ore_type] : 3;
         const processing_type = is_registered_on_processing_dict ? processing_dict[ore_kind]["processing_type"] : 2;
-        if (processing_type == 0) {
+        if (processing_type === 0) {
             const output_multiplier = processing_dict[ore_kind]["output_multiplier"];
             const input_item_overrided = ("enriched_item_name_override" in processing_dict[ore_kind]) ? processing_dict[ore_kind]["enriched_item_name_override"] : `minecraft:${ore_kind}`;
             event.recipes.mekanism.enriching( // 2
@@ -71,7 +71,7 @@ onEvent("recipes", (event) => {
                 },
             });
         }
-        else if (processing_type == 1) {
+        else if (processing_type === 1) {
             const input_multiplier = processing_dict[ore_kind]["output_multiplier"];
             event.recipes.mekanism.enriching(
                 `${Math.floor(multiplier * input_multiplier)}x minecraft:${ore_kind}`,
@@ -79,8 +79,8 @@ onEvent("recipes", (event) => {
                 "1x mekanism:oxygen",
             );
         }
-        else if (processing_type == 2) {
-            const is_kubejs = is_registered_on_processing_dict && (processing_dict[ore_kind]["is_kubejs"] == true);
+        else if (processing_type === 2) {
+            const is_kubejs = is_registered_on_processing_dict && (processing_dict[ore_kind]["is_kubejs"] === true);
             event.recipes.mekanism.enriching(
                 `${Math.floor(multiplier * 9)}x ${is_kubejs ? "kubejs" : "mekanism"}:dust_${ore_kind}`,
                 input_item,

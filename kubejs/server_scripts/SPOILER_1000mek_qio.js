@@ -25,7 +25,10 @@ onEvent("recipes", (event) => {
             n: N,
         });
     };
-    const change = (out, inp) => { event.shapeless(out, [inp]), event.shapeless(inp, [out]); };
+    const change = (out, inp) => {
+        event.shapeless(out, [inp]);
+        event.shapeless(inp, [out]);
+    };
     change("mekanism:qio_drive_base", "mekanism:inactive_qio_drive_base");
     change("mekanism:qio_drive_hyper_dense", "mekanism:inactive_qio_drive_hyper_dense");
     change("mekanism:qio_drive_time_dilating", "mekanism:inactive_qio_drive_time_dilating");

@@ -34,7 +34,7 @@ onEvent(`item.registry`, (event) => {
         event.create(`mek1000:shard_${type}`).tag(`mekanism:shards`).tag(`mekanism:shards/${type}`);
         event.create(`mek1000:clump_${type}`).tag(`mekanism:clumps`).tag(`mekanism:clumps/${type}`);
 
-        if (type == "lapis") {
+        if (type === "lapis") {
             event.create(`mek1000:dirty_dust_${type}`).tag(`mekanism:dirty_dusts`).tag(`mekanism:dirty_dusts/${type}`).textureJson({ layer0: "mekanism:item/dust_lapis_lazuli", layer1: "mekanism:item/dirty_dust_overlay" });
         }
         else {

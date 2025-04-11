@@ -127,7 +127,8 @@ onEvent("recipes", (event) => {
                 energyRequired: 800, duration: 20,
                 gasOutput: { gas: "mek1000:active_" + type, amount: 200 },
             });
-        } if (super_dore) {
+        }
+        if (super_dore) {
             event.custom({ type: "mekanism:reaction",
                 itemInput: { item: `superores:super_deepslate_${type}_ore` },
                 fluidInput: { amount: 400, tag: "minecraft:water" },
@@ -142,7 +143,8 @@ onEvent("recipes", (event) => {
                 energyRequired: 800, duration: 20,
                 gasOutput: { gas: "mek1000:active_" + type, amount: 200 },
             });
-        } if (super_nore) {
+        }
+        if (super_nore) {
             event.custom({ type: "mekanism:reaction",
                 itemInput: { item: `superores:super_nether_${type}_ore` },
                 fluidInput: { amount: 400, tag: "minecraft:water" },
@@ -160,7 +162,7 @@ onEvent("recipes", (event) => {
         }
 
         // 5..6倍化:
-        if (mode == "ore") {
+        if (mode === "ore") {
             event.custom({
                 type: "mekanism:dissolution", itemInput: { ingredient: { item: `mek1000:compressed_purified_${type}_rawore` } }, gasInput: { amount: 9, gas: "mekanism:sulfuric_acid" }, output: { slurry: "mek1000:dirty_compressed_" + type, amount: outputs_5 * 9, chemicalType: "slurry" },
             });
@@ -168,7 +170,7 @@ onEvent("recipes", (event) => {
                 type: "mekanism:dissolution", itemInput: { ingredient: { item: `mek1000:purified_${type}_rawore` } }, gasInput: { amount: 1, gas: "mekanism:sulfuric_acid" }, output: { slurry: "mek1000:dirty_compressed_" + type, amount: outputs_5, chemicalType: "slurry" },
             });
         }
-        else if (mode == "gem") {
+        else if (mode === "gem") {
             event.custom(
                 { type: "mekanism:washing", fluidInput: { amount: 5, tag: "minecraft:water" }, slurryInput: { amount: 1, slurry: `mek1000:dirty_${type}` }, output: { slurry: `mek1000:clean_${type}`, amount: 10 } },
             );

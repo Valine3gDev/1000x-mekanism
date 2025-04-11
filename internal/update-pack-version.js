@@ -24,16 +24,16 @@ console.error(`現在のバージョン: ${prefix}${major}.${minor}.${patch}`);
 if (versionPrefix !== "" && versionPrefix !== prefix) {
     prefix = versionPrefix;
 }
-if (versionType == "major") {
+if (versionType === "major") {
     major++;
     minor = 0;
     patch = 0;
 }
-else if (versionType == "minor") {
+else if (versionType === "minor") {
     minor++;
     patch = 0;
 }
-else if (versionType == "patch") {
+else if (versionType === "patch") {
     patch++;
 }
 else {

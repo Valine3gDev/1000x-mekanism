@@ -77,7 +77,7 @@ onEvent("recipes", (event) => {
             "ttt",
         ], {
             t: input,
-        }),
+        });
         event.shapeless(input2, [output]);
     }
 
@@ -154,16 +154,14 @@ onEvent("recipes", (event) => {
         "   ",
     ], {
         A: "mekanism:creative_chemical_tank",
-    },
-    );
+    });
     event.shaped("1x mekanism:creative_bin", [
         "   ",
         " A ",
         "   ",
     ], {
         A: "mekanism:creative_bin",
-    },
-    );
+    });
     event.shaped("1x mekanism:creative_fluid_tank", [
         "   ",
         " A ",
