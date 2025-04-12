@@ -1,0 +1,10 @@
+{
+  "name": "extraordinary-energy",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@types/eslint": "^9.6.1",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0"
+  }
+}
